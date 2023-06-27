@@ -14,3 +14,8 @@ export interface IProduct {
 export interface ServerResponse<T> {
   products: T[];
 }
+
+export interface IRating {
+  value: number;
+  text: string;
+}
