@@ -1,10 +1,19 @@
-import React from "react";
+import { Container } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
-    <div>
-      <h3>hello shop</h3>
-    </div>
+    <>
+      <Header />
+      <main className="py-3">
+        <Container>
+          <Outlet />
+        </Container>
+      </main>
+      <Footer />
+    </>
   );
 };
 
