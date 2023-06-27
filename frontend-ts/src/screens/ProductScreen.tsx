@@ -13,7 +13,14 @@ const ProductSreen = (): JSX.Element => {
   const product: IProduct | undefined = products.find(p => p._id === productId);
 
   if (!product) {
-    return <p>Product not found</p>;
+    return (
+      <>
+        <h3>Whoops.. Product not found</h3>
+        <Link className="btn btn-light my-3" to="/">
+          Go Back
+        </Link>
+      </>
+    );
   }
 
   return (
