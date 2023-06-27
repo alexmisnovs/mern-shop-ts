@@ -9,7 +9,6 @@ const App = (): JSX.Element => {
       <Header />
       <main className="py-3">
         <Container>
-          <h1>hello shop</h1>
           <HomeScreen />
         </Container>
       </main>
