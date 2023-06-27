@@ -1,6 +1,4 @@
-import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { Row, Col } from "react-bootstrap";
 import products from "../products";
 import Product from "../components/Product";
 
