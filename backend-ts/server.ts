@@ -4,8 +4,12 @@ dotenv.config();
 import products from "./products";
 import { IProduct } from "./models/models";
 
+import connectDB from "./config/db";
+
 import { router as productRoutes } from "./routes/products.routes";
 import { router as userRoutes } from "./routes/users.routes";
+
+connectDB();
 
 const app = express();
 
