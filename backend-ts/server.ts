@@ -7,7 +7,7 @@ const port = 5001;
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("API is running.");
+  res.send("API is stable!");
 });
 
 app.get("/api/products", (req, res) => {

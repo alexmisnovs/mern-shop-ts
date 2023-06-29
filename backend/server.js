@@ -8,7 +8,7 @@ const products_1 = __importDefault(require("./products"));
 const port = 5001;
 const app = (0, express_1.default)();
 app.get("/", (req, res) => {
-    res.send("API is running.");
+    res.send("API is stable!");
 });
 app.get("/api/products", (req, res) => {
     res.json(products_1.default);
