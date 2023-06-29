@@ -9,5 +9,5 @@ const products_1 = __importDefault(require("../products"));
 const router = (0, express_1.Router)();
 exports.router = router;
 router.get("/", (req, res) => {
-    res.status(200).send(products_1.default);
+    res.status(200).json(products_1.default);
 });
