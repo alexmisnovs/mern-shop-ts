@@ -11,7 +11,7 @@ describe("Test server", () => {
 
 describe("Product Routes", () => {
   it("Get all products", async () => {
-    const res = await request(app).get("/products");
+    const res = await request(app).get("/api/products");
     expect(res.body.length).toBe(6);
     res.body.forEach((product: IProduct) => {
       expect(typeof product.name).toBe("string");
@@ -20,7 +20,7 @@ describe("Product Routes", () => {
   });
   it("responds with status 200 the GET method", () => {
     return request(app)
-      .get("/products")
+      .get("/api/products")
       .then(response => {
         expect(response.statusCode).toBe(200);
       });

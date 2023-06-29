@@ -11,7 +11,7 @@ const products_routes_1 = require("./routes/products.routes");
 const users_routes_1 = require("./routes/users.routes");
 const app = (0, express_1.default)();
 app.use("/users", users_routes_1.router);
-app.use("/products", products_routes_1.router);
+app.use("/api/products", products_routes_1.router);
 app.get("/", (req, res) => {
     res.json({ message: "API is stable!" });
 });
@@ -24,6 +24,6 @@ app.get("/api/products/:id", (req, res) => {
         res.send("product not found");
     res.json(product);
 });
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`running on port ${PORT}`));
 exports.default = app;
