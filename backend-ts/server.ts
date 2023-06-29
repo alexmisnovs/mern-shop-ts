@@ -1,8 +1,10 @@
 import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
 import products from "./products";
 import { IProduct } from "./models/models";
 
-const port = 5001;
+const port = process.env.PORT || 5001;
 
 const app = express();
 
