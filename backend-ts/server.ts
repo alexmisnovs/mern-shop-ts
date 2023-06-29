@@ -4,17 +4,21 @@ dotenv.config();
 import products from "./products";
 import { IProduct } from "./models/models";
 
-const port = process.env.PORT || 5001;
+import { router as productRoutes } from "./routes/products.routes";
+import { router as userRoutes } from "./routes/users.routes";
 
 const app = express();
 
+app.use("/users", userRoutes);
+app.use("/products", productRoutes);
+
 app.get("/", (req, res) => {
-  res.send("API is stable!");
+  res.json({ message: "API is stable!" });
 });
 
-app.get("/api/products", (req, res) => {
-  res.json(products);
-});
+// app.get("/api/products", (req, res) => {
+//   res.json(products);
+// });
 
 app.get("/api/products/:id", (req, res) => {
   const product: IProduct | undefined = products.find(p => p._id === req.params.id);
@@ -22,6 +26,8 @@ app.get("/api/products/:id", (req, res) => {
   res.json(product);
 });
 
-app.listen(port, () => {
-  console.log(`server running on port: ${port}`);
-});
+const PORT = process.env.PORT || 5001;
+
+app.listen(PORT, (): void => console.log(`running on port ${PORT}`));
+
+export default app;
