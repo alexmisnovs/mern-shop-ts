@@ -1,5 +1,8 @@
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
-import products from "../products";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import { useParams } from "react-router-dom";
 import { IProduct } from "../models/models";
 import { Link } from "react-router-dom";
@@ -9,11 +12,29 @@ import Rating from "../components/Rating";
 // const HomeScreen: React.FC = () => {
 const ProductSreen = (): JSX.Element => {
   const { id: productId } = useParams();
+  const [product, setProduct] = useState<IProduct>();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${productId}`);
+      setProduct(data);
+    };
+
+    fetchProduct();
+  }, [productId]);
+
   //temp for local data
-  const product: IProduct | undefined = products.find(p => p._id === productId);
+  // const product: IProduct | undefined = products.find(p => p._id === productId);
 
   if (!product) {
-    return <p>Product not found</p>;
+    return (
+      <>
+        <h3>Whoops.. Product not found</h3>
+        <Link className="btn btn-light my-3" to="/">
+          Go Back
+        </Link>
+      </>
+    );
   }
 
   return (
