@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const validateEnv_1 = __importDefault(require("./utils/validateEnv"));
 const products_1 = __importDefault(require("./products"));
 const db_1 = __importDefault(require("./config/db"));
 const products_routes_1 = require("./routes/products.routes");
@@ -26,6 +27,6 @@ app.get("/api/products/:id", (req, res) => {
         res.send("product not found");
     res.json(product);
 });
-const PORT = process.env.PORT || 8000;
+const PORT = validateEnv_1.default.PORT || 8000;
 app.listen(PORT, () => console.log(`running on port ${PORT}`));
 exports.default = app;

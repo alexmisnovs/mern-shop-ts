@@ -11,6 +11,15 @@ export interface IProduct {
   numReviews: number;
 }
 
+export interface IUser {
+  _id: string;
+  name: string;
+}
+export interface IReview {
+  _id: string;
+  name: string;
+}
+
 export interface ServerResponse<T> {
   products: T[];
 }

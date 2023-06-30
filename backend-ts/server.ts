@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
+import env from "./utils/validateEnv";
 import products from "./products";
-import { IProduct } from "./models/models";
+import { IProduct } from "./types/types";
 
 import connectDB from "./config/db";
 
@@ -30,7 +31,7 @@ app.get("/api/products/:id", (req, res) => {
   res.json(product);
 });
 
-const PORT = process.env.PORT || 8000;
+const PORT = env.PORT || 8000;
 
 app.listen(PORT, (): void => console.log(`running on port ${PORT}`));
 

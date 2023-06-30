@@ -13,9 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+const validateEnv_1 = __importDefault(require("../utils/validateEnv"));
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const conn = yield mongoose_1.default.connect(process.env.MONGO_ATLAS_URI);
+        const conn = yield mongoose_1.default.connect(validateEnv_1.default.MONGO_ATLAS_URI);
         //TODO: make sure the uri will always be string
         console.log(`MongoDB connected: ${conn.connection.host}`);
     }
