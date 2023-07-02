@@ -1,13 +1,6 @@
-import mongoose from "mongoose";
+import { Schema, InferSchemaType, model } from "mongoose";
 
-interface User {
-  name: string;
-  email: string;
-  password: string;
-  isAdmin: Boolean;
-}
-
-const usersSchema = new mongoose.Schema<User>(
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -31,6 +24,6 @@ const usersSchema = new mongoose.Schema<User>(
   { timestamps: true }
 );
 
-const User = mongoose.model("User", usersSchema);
+type User = InferSchemaType<typeof userSchema>;
 
-export default User;
+export default model<User>("User", userSchema);

@@ -1,29 +1,14 @@
-import mongoose from "mongoose";
+import { Schema, InferSchemaType, model } from "mongoose";
 
-interface Product {
-  // _id: string;
-  name: string;
-  image: string;
-  description: string;
-  brand: string;
-  category: string;
-  price: number;
-  countInStock: number;
-  rating: number;
-  numReviews: number;
-  user: any;
-  reviews: any;
-}
-
-const productSchema = new mongoose.Schema<Product>(
+const productSchema = new Schema(
   {
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       required: true,
       ref: "User",
     },
     reviews: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
     },
     name: {
       type: String,
@@ -65,6 +50,6 @@ const productSchema = new mongoose.Schema<Product>(
   { timestamps: true }
 );
 
-const Product = mongoose.model("Product", productSchema);
+type Product = InferSchemaType<typeof productSchema>;
 
-export default Product;
+export default model<Product>("Product", productSchema);

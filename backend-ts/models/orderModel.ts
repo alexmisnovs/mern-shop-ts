@@ -1,44 +1,9 @@
-import mongoose from "mongoose";
+import mongoose, { InferSchemaType, model, Schema } from "mongoose";
 
-interface OrderItem {
-  name: String;
-  qty: Number;
-  image: String;
-  price: Number;
-  product: {};
-}
-interface ShippingAddress {
-  address: String;
-  city: String;
-  postalCode: String;
-  country: String;
-}
-interface PaymentResult {
-  id: String;
-  status: String;
-  update_time: String;
-  email_address: String;
-}
-interface Order {
-  orderItems: OrderItem[];
-  user: any;
-  shippingAddress: ShippingAddress;
-  paymentMethod: String;
-  paymentResult: PaymentResult;
-  itemsPrice: Number;
-  taxPrice: Number;
-  shippingPrice: Number;
-  totalPrice: Number;
-  isPaid: Boolean;
-  paidAt: Date;
-  isDelivered: Boolean;
-  deliveredAt: Date;
-}
-
-const OrderSchema = new mongoose.Schema<Order>(
+const OrderSchema = new Schema(
   {
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       required: true,
       ref: "User",
     },
@@ -49,7 +14,7 @@ const OrderSchema = new mongoose.Schema<Order>(
         image: { type: String, required: true },
         price: { type: String, required: true },
         product: {
-          type: mongoose.Schema.Types.ObjectId,
+          type: Schema.Types.ObjectId,
           required: true,
           ref: "Product",
         },
@@ -111,6 +76,6 @@ const OrderSchema = new mongoose.Schema<Order>(
   { timestamps: true }
 );
 
-const Order = mongoose.model("Order", OrderSchema);
+type Order = InferSchemaType<typeof OrderSchema>;
 
-export default Order;
+export default model<Order>("Order", OrderSchema);
