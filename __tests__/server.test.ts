@@ -1,6 +1,6 @@
 import request from "supertest";
 import app from "../backend-ts/server";
-import { IProduct } from "../backend-ts/models/models";
+import { IProduct } from "../backend-ts/types/types";
 
 describe("Test server", () => {
   it("Catch-all route", async () => {

@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "vitest --globals",
-    "jtest": "jest --coverage --forceExit --detectOpenHandles --no-cache --watchAll --maxWorkers=1",
+    "test": "vitest --globals ./__tests__",
+    "jtest": "jest --coverage --forceExit --detectOpenHandles --no-cache --watchAll --maxWorkers=1 ./__tests__",
     "build": "concurrently \"rimraf backend\" \"npx tsc\" ",
     "prestart": "npm run build",
     "start": "node backend/server.js",
