@@ -1,9 +1,10 @@
 import { Router, Request, Response } from "express";
-import products from "../products";
+import Product from "../models/productModel";
 
 const router = Router();
 
-router.get("/", (req: Request, res: Response): void => {
+router.get("/", async (req: Request, res: Response) => {
+  const products = await Product.find().exec();
   res.status(200).json(products);
 });
 

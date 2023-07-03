@@ -14,8 +14,8 @@
     "serve": "concurrently \"npx tsc -w\" \"nodemon backend-ts/server.ts\" ",
     "client": "npm start --prefix frontend-ts",
     "dev": "concurrently \"npm run serve\" \"npm run client\" ",
-    "seed:import": "node backend-ts/dist/seeder.js",
-    "seed:destroy": "node backend-ts/dist/seeder.js -d"
+    "seed:import": "npx node-ts backend-ts/seeder.ts",
+    "seed:destroy": "npx node-ts backend-ts/seeder.ts -d"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

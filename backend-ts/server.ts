@@ -14,7 +14,7 @@ connectDB();
 
 const app = express();
 
-app.use("/users", userRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 
 app.get("/", (req, res) => {

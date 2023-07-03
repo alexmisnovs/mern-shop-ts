@@ -13,7 +13,7 @@ const products_routes_1 = require("./routes/products.routes");
 const users_routes_1 = require("./routes/users.routes");
 (0, db_1.default)();
 const app = (0, express_1.default)();
-app.use("/users", users_routes_1.router);
+app.use("/api/users", users_routes_1.router);
 app.use("/api/products", products_routes_1.router);
 app.get("/", (req, res) => {
     res.json({ message: "API is stable!" });
