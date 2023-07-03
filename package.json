@@ -6,16 +6,20 @@
   "scripts": {
     "test": "vitest --globals ./__tests__",
     "jtest": "jest --coverage --forceExit --detectOpenHandles --no-cache --watchAll --maxWorkers=1 ./__tests__",
-    "build": "concurrently \"rimraf backend\" \"npx tsc\" ",
+    "build": "concurrently \"rimraf backend-ts/dist\" \"npx tsc\" ",
     "prestart": "npm run build",
-    "start": "node backend/server.js",
+    "start": "node backend-ts/dist/server.js",
     "lint": "npx eslint . --ext .ts",
     "preserve": "concurrently \"npm run lint\" \"npm run build\" ",
     "serve": "concurrently \"npx tsc -w\" \"nodemon backend-ts/server.ts\" ",
     "client": "npm start --prefix frontend-ts",
-    "dev": "concurrently \"npm run serve\" \"npm run client\" "
+    "dev": "concurrently \"npm run serve\" \"npm run client\" ",
+    "seed:import": "node backend-ts/dist/seeder.js",
+    "seed:destroy": "node backend-ts/dist/seeder.js -d"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
     "concurrently": "^8.2.0",
     "dotenv": "^16.3.1",
     "envalid": "^7.3.1",
@@ -23,6 +27,8 @@
     "mongoose": "^7.3.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/colors": "^1.2.1",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/mongoose": "^5.11.97",
