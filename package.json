@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "vitest --globals ./__tests__",
-    "jtest": "jest --coverage --forceExit --detectOpenHandles --no-cache --watchAll --maxWorkers=1 ./__tests__",
+    "test": "cross-env NODE_ENV=test vitest --globals ./__tests__",
+    "jtest": "cross-env NODE_ENV=test jest --coverage --forceExit --detectOpenHandles --no-cache --watchAll --maxWorkers=1 ./__tests__",
     "build": "concurrently \"rimraf backend-ts/dist\" \"npx tsc\" ",
     "prestart": "npm run build",
     "start": "node backend-ts/dist/server.js",
@@ -21,9 +21,11 @@
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
     "envalid": "^7.3.1",
     "express": "^4.18.2",
+    "mongodb-memory-server": "^8.13.0",
     "mongoose": "^7.3.1"
   },
   "devDependencies": {

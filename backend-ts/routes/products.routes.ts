@@ -8,4 +8,10 @@ router.get("/", async (req: Request, res: Response) => {
   res.status(200).json(products);
 });
 
+router.get("/:id", async (req, res) => {
+  const product = await Product.findById(req.params.id).exec();
+  if (product === undefined) res.send("product not found");
+  res.json(product);
+});
+
 export { router };

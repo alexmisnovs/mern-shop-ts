@@ -21,3 +21,9 @@ router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const products = yield productModel_1.default.find().exec();
     res.status(200).json(products);
 }));
+router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const product = yield productModel_1.default.findById(req.params.id).exec();
+    if (product === undefined)
+        res.send("product not found");
+    res.json(product);
+}));
