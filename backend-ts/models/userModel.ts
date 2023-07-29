@@ -1,5 +1,17 @@
-import { Schema, InferSchemaType, model } from "mongoose";
+import { Schema, InferSchemaType, model, Document } from "mongoose";
 
+export interface IUserInput {
+  email: string;
+  name: string;
+  isAdmin: boolean;
+  password: string;
+}
+
+export interface IUser extends IUserInput, Document {
+  createdAt: Date;
+  updatedAt: Date;
+  // comparePassword(providedPassword: string): Promise<boolean>;
+}
 const userSchema = new Schema(
   {
     name: {
@@ -24,6 +36,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-type User = InferSchemaType<typeof userSchema>;
+export type User = InferSchemaType<typeof userSchema>;
 
 export default model<User>("User", userSchema);

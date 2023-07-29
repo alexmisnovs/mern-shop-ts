@@ -1,4 +1,24 @@
-import { Schema, InferSchemaType, model } from "mongoose";
+import { Schema, InferSchemaType, model, Document } from "mongoose";
+import { IUser } from "../types/types";
+
+export interface IProductInput {
+  user: IUser["_id"];
+  description: string;
+  price: number;
+  image: string;
+  name: string;
+  brand: string;
+  category: string;
+  countInStock: number;
+  rating: number;
+  numReviews: number;
+}
+
+export interface IProduct extends IProductInput, Document {
+  _id: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 const productSchema = new Schema(
   {
@@ -50,6 +70,6 @@ const productSchema = new Schema(
   { timestamps: true }
 );
 
-type Product = InferSchemaType<typeof productSchema>;
+export type Product = InferSchemaType<typeof productSchema>;
 
 export default model<Product>("Product", productSchema);
